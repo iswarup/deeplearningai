@@ -1,4 +1,6 @@
 
+What You Need To Remember ?
+
 C1W2 Pr Ass
 
 - np.exp() works elementwise
