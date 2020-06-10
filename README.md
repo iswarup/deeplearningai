@@ -74,3 +74,53 @@ C1W4 Ass2
 	    ...
 	    return parameters
 
+
+## Course 2 Week 1
+
+Train Dev Test sets. ------> Bigger Data 98-2-2, Smaller 60-20-20
+Bias/Variance. ------------> High Bias = Underfiting, High Variance = Overfiting
+Basic Recipe: "On Loop"
+	1.High Bias?
+		Bigger network, layers/hiddenUnits
+		Train longer (doesn't always help, but certainly doesn't hurt)
+		[NN Architectures]  (not always work)
+	2.High Variance?
+		More Data
+		Regularization
+		[NN Archis]  keep trying, not always work
+
+	Regularized Bigger Networks almost never hurts
+
+Regularization: add lambd/2m(sum(W**W)) to the cost  ## Square of norm of W     # sum over nL,nL-1  # Frobenius Norm
+				add lambd/m (sum(W))
+Dropout Regularization
+
+	if Overfiting: lower down the keep_prob, so that it randomly kills more of the units
+	then the cost_function J is now less well defined so harder to debug by plotting it on a graph with no of iterations on X-axis
+	to go around this problem, turn off the drop out, set keep_prob = 1.0 then debug plot.
+Other Regularization methods: Data Augmentation, Early Stopping(Orthogonalization:-it couples the two tasks-HB,HV)
+		Substitute for ES is L2 but computationally expensive.
+
+
+Normalizing------ setting up your opt prob to train NN quickly
+		Use same values for both test/train data
+	1.Subtract mean		X -=   mu:= 1/m* sum(X)
+	2.Normalize Variance   X /= sigma    sigma= 1/m* sum(X**2)
+
+		So X= (X-mu)/sigma
+
+		
+Initialize weights to avoid them exploding/vanishing, also to speed up the training
+	#doesn't completely help but good to some extent
+
+	Z = w1x1 + w2x2 + ...... + WnXn
+		large n ----->>  Smaller W(i)
+		if the activation is RelU here.
+			Var(Wi) = 2/n
+			Wl = np.random.randn(shape)* np.sqrt(2/n(l-1))		# a less imp hyperpara can be inserted in the numerator 
+		tanh	by Xavier init
+			sqrt(1/n(l-1))
+		????	by Yoshua Bengio
+			sqrt(2/n(l-1)+nl)
+
+Grad Check = Debugging
