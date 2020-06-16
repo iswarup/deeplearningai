@@ -1,5 +1,8 @@
 
-What You Need To Remember ?
+No type of project guidelines are followed below, these are just a few rough notes.
+
+
+WhatYouNeedToRemember
 
 C1W2 Pr Ass
 
@@ -74,6 +77,7 @@ C1W4 Ass2
 	    ...
 	    return parameters
 
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Course 2 Week 1
 
@@ -124,3 +128,18 @@ Initialize weights to avoid them exploding/vanishing, also to speed up the train
 			sqrt(2/n(l-1)+nl)
 
 Grad Check = Debugging
+
+
+
+C2W1: WhatYouNeedToRemember
+	Ass1:
+		ZeroInitialzation of weights doesn't break the symmetry. That is every neuron in the layer will learn the same thing, so the layer will behave as if containing a single neuron. With a bunch of such layers, the network is no more powerful than a linear classifier such as logistic regression.
+
+		RandomInitialization of weights enables each neuron to learn a different function of it's inputs.
+			np.random.rand(2,3) returns a uniform distribution.
+			np.random.randn(2,3) returns a normal distribution. (Only values between 0 and 1.)
+		Initializing weights to very large random values does not work well, slows down the optimization. Small values do better. The imp que is how small they should be.
+
+		He Initialization
+		Great for networks with ReLU activations.
+		Instead of 10, multiply by np.sqrt(2/prev_layer_dimensions)
