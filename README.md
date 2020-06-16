@@ -27,13 +27,16 @@ cache --      Z, A
 grads --      dW, db
 
 backprop---
+	
 	dZ[L] = A[L] - Y
+	
 	dW[]
 
 
 
 C1W4 Ass1
 functions:
+	
 	def initialize_parameters(nx,nh,ny):
 		return parameters							{W1b1W2b2}
 	def initialize_parameters_deep(layer_dims):
